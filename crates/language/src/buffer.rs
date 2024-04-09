@@ -512,6 +512,10 @@ impl Buffer {
         )
     }
 
+    pub fn local<T: Into<String>>(base_text: T, cx: &mut ModelContext<Self>) -> Self {
+        Self::new(0, BufferId::new(cx.entity_id().as_u64()), base_text)
+    }
+
     /// Create a new buffer that is a replica of a remote buffer.
     pub fn remote(
         remote_id: BufferId,
